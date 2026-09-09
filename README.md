@@ -8,10 +8,16 @@ Plain HTML and CSS with no build step, no framework, and no dependencies. Open
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | What (CSS)² is, the five kinds of gathering, organizers, join |
+| `index.html` | What (CSS)² is, the five kinds of gathering, join |
 | `events.html` | Upcoming schedule, past sessions with slides/notes |
-| `resources.html` | Shared glossary, CSS Canon, related Stanford programs |
-| `directory.html` | Searchable member directory, filterable by school / method / data |
+| `directory.html` | Organizers, then the searchable member list |
+| `resources.html` | **Hidden for now** — glossary, CSS Canon, related programs |
+
+`resources.html` is still in the repo and still live at its URL, but it isn't
+linked from anywhere and carries a `noindex` tag, since it's empty until the
+Winter session fills it. To switch it back on: re-add the Resources link to the
+nav and footer of every page, and delete the `robots` meta tag from
+`resources.html`.
 
 ## Editing content
 
@@ -54,7 +60,8 @@ site while you're waiting for the workspace. Same for `contactEmail`: set it and
 a contact line appears in the footer, leave it blank and nothing shows.
 
 **Add an organizer** — copy a block into `ORGANIZERS` in `data/site.js`. They
-appear in the Organizers drawer on the home page.
+appear in their own block at the top of the members page, in the same card
+style as members.
 
 ## Adding members
 
