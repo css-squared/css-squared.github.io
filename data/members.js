@@ -5,14 +5,11 @@
 
    {
      name:    "Full Name",
-     role:    "PhD Student",              // PhD / Masters Student, Postdoc, Faculty, Staff
-     unit:    "Sociology",                // department, lab, or program
-     school:  "H&S",                      // must match a value in SCHOOLS below
-     blurb:   "One sentence on what they're working on.",
-     methods: ["Causal inference"],        // what they can help others with
-     seeking: true,                        // true = looking for collaborators
-     link:    "https://...",               // optional: profile or personal site
-     photo:   ""                           // optional: leave empty for initials
+     program: "PhD Student, Sociology",    // programme, department, or lab
+     blurb:   "One or two lines on what they work on.",   // 300 chars max
+     methods: ["Network analysis"],         // up to 3, from METHOD_OPTIONS
+     link:    "https://...",                // optional: profile or personal site
+     photo:   ""                            // optional: leave empty for initials
    }
 
    Only `name` is required. Everything else degrades quietly — no blurb means
@@ -20,35 +17,23 @@
    the person's initials.
 --------------------------------------------------------------------------- */
 
-/* School filter. Order here is the order the chips appear in. */
-const SCHOOLS = [
-  "H&S",
-  "Engineering",
-  "GSE",
-  "GSB",
-  "Medicine",
-  "Law",
-  "Sustainability",
-  "Other"
-];
-
-/* The canonical method list — KEEP THIS IN STEP WITH THE FORM'S CHECKBOXES.
-   Filter chips appear in this order, so the directory looks the same from one
-   week to the next. Anything a member typed into the form's "Other" box still
-   works: it just gets listed after these, alphabetically. */
+/* The method checkboxes on the registration form, in the form's own order.
+   KEEP THESE TWO IN STEP: filter chips render in this order, and a label that
+   doesn't match exactly becomes a separate chip. Anything someone typed into
+   the form's "Other" box still works — it just lists after these,
+   alphabetically. */
 const METHOD_OPTIONS = [
-  "Text as data / NLP",
-  "LLMs in research",
+  "Text as data/NLP",
+  "Images, audio & video as data",
   "Network analysis",
   "Machine learning & prediction",
-  "Causal inference",
-  "Experiments",
+  "Causal inference (quasi-experimental)",
+  "Experiments (field, lab, survey)",
   "Simulation & agent-based modeling",
   "Bayesian & statistical modeling",
-  "Measurement & survey design",
   "Geospatial analysis",
-  "Images, audio & video as data",
-  "Data collection (scraping, APIs)"
+  "Data collection (scraping, APIs, pipelines)",
+  "LLMs in research (annotation, synthetic data, agents)"
 ];
 
 const MEMBERS = [
@@ -58,12 +43,9 @@ const MEMBERS = [
   //
   // {
   //   name: "Jane Doe",
-  //   role: "PhD Student",
-  //   unit: "Management Science & Engineering",
-  //   school: "Engineering",
+  //   program: "PhD Student, Management Science & Engineering",
   //   blurb: "Modelling how misinformation spreads through campus networks.",
   //   methods: ["Network analysis", "Simulation & agent-based modeling"],
-  //   seeking: true,
   //   link: "",
   //   photo: ""
   // },

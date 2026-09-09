@@ -85,7 +85,7 @@
         esc(initials(p.name)) +
         "</span>";
 
-    var role = [p.role, p.unit].filter(Boolean).map(esc).join(" · ");
+    var program = esc(p.program || "");
 
     return (
       '<article class="person">' +
@@ -94,7 +94,7 @@
       '<h3 class="person__name">' +
       linked(p.name, p.link) +
       "</h3>" +
-      (role ? '<p class="person__role">' + role + "</p>" : "") +
+      (program ? '<p class="person__role">' + program + "</p>" : "") +
       (p.blurb ? '<p class="person__blurb">' + esc(p.blurb) + "</p>" : "") +
       (extraHtml || "") +
       "</div>" +
@@ -241,15 +241,13 @@
   /* --- member directory ------------------------------------------------- */
 
   function memberHtml(m) {
-    var pills = [];
-    if (m.seeking) {
-      pills.push('<li><span class="pill pill--seek">Looking for collaborators</span></li>');
-    }
-    (m.methods || []).forEach(function (t) {
-      pills.push('<li><span class="pill pill--method">' + esc(t) + "</span></li>");
-    });
+    var pills = (m.methods || [])
+      .map(function (t) {
+        return '<li><span class="pill pill--method">' + esc(t) + "</span></li>";
+      })
+      .join("");
 
-    return personHtml(m, m._i, pills.length ? '<ul class="pills">' + pills.join("") + "</ul>" : "");
+    return personHtml(m, m._i, pills ? '<ul class="pills">' + pills + "</ul>" : "");
   }
 
   function setupDirectory() {
@@ -276,13 +274,7 @@
       m._i = i;
     });
 
-    var state = { schools: [], methods: [], seeking: false, query: "" };
-
-    var schoolsInUse = (typeof SCHOOLS !== "undefined" ? SCHOOLS : []).filter(function (s) {
-      return members.some(function (m) {
-        return m.school === s;
-      });
-    });
+    var state = { methods: [], query: "" };
 
     var canonical = typeof METHOD_OPTIONS !== "undefined" ? METHOD_OPTIONS : [];
     var used = {};
@@ -340,17 +332,7 @@
       });
     }
 
-    chipRow("filter-schools", schoolsInUse, "schools");
     chipRow("filter-methods", methodsInUse, "methods");
-
-    var seekingBtn = el("filter-seeking");
-    if (seekingBtn) {
-      seekingBtn.addEventListener("click", function () {
-        state.seeking = !state.seeking;
-        seekingBtn.setAttribute("aria-pressed", state.seeking ? "true" : "false");
-        render();
-      });
-    }
 
     var search = el("member-search");
     if (search) {
@@ -363,9 +345,8 @@
     var reset = el("filter-reset");
     if (reset) {
       reset.addEventListener("click", function () {
-        state = { schools: [], methods: [], seeking: false, query: "" };
+        state = { methods: [], query: "" };
         if (search) search.value = "";
-        if (seekingBtn) seekingBtn.setAttribute("aria-pressed", "false");
         document.querySelectorAll("#directory-controls .chip").forEach(function (c) {
           c.setAttribute("aria-pressed", "false");
         });
@@ -374,8 +355,6 @@
     }
 
     function matches(m) {
-      if (state.schools.length && state.schools.indexOf(m.school) === -1) return false;
-      if (state.seeking && !m.seeking) return false;
       if (state.methods.length) {
         var has = (m.methods || []).some(function (t) {
           return state.methods.indexOf(t) !== -1;
@@ -383,7 +362,7 @@
         if (!has) return false;
       }
       if (state.query) {
-        var haystack = [m.name, m.role, m.unit, m.school, m.blurb]
+        var haystack = [m.name, m.program, m.blurb]
           .concat(m.methods || [])
           .filter(Boolean)
           .join(" ")
@@ -403,8 +382,8 @@
       }
       results.innerHTML = shown.length
         ? shown.map(memberHtml).join("")
-        : '<div class="note"><h3>Nothing here</h3><p>No one matches those filters yet — ' +
-          "try clearing one.</p></div>";
+        : '<div class="note"><h3>Nothing here</h3><p>Nobody matches that yet — ' +
+          "try clearing a filter.</p></div>";
     }
 
     render();

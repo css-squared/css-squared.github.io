@@ -696,11 +696,6 @@ a:hover {
   color: #2f5c46;
 }
 
-.pill--seek {
-  background: var(--cardinal);
-  color: #fff;
-}
-
 .pill--link {
   background: var(--sky);
   color: #234a76;

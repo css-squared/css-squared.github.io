@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Members — (CSS)² Computational Social Science Community Space at Stanford</title>
-<meta name="description" content="A searchable directory of (CSS)² members at Stanford, filterable by school, method, and the data they work with.">
+<meta name="description" content="Who is doing computational social science at Stanford: a directory of (CSS)² members, their programs, and what they work on.">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,10 +36,11 @@
     <div class="wrap">
       <div class="section__head">
         <span class="section__label">Directory</span>
-        <h1>A method without data. Data <span class="hl hl--mint">without a method</span>.</h1>
+        <h1>Who else is doing <span class="hl hl--mint">CSS at Stanford</span></h1>
         <p class="lede">
-          Members list what they can help with and what they work on. Search for the half you're
-          missing. Listings are opt-in and reviewed.
+          Computational social science here isn't one department, so there's no list of who's
+          doing it — people in the same field go years without knowing about each other. This is
+          that list: names, programs, and what everyone works on, across all seven schools.
         </p>
       </div>
 
@@ -47,13 +48,8 @@
         <div class="filters__row">
           <span class="filters__label" id="label-search">Search</span>
           <input class="search" type="search" id="member-search"
-                 placeholder="Name, department, method, data…" aria-labelledby="label-search">
-          <button type="button" class="chip" id="filter-seeking" aria-pressed="false">Looking for collaborators</button>
+                 placeholder="Name, program, topic…" aria-labelledby="label-search">
           <button type="button" class="chip" id="filter-reset">Clear</button>
-        </div>
-        <div class="filters__row">
-          <span class="filters__label">School</span>
-          <div class="filters__row" id="filter-schools"></div>
         </div>
         <div class="filters__row">
           <span class="filters__label">Methods</span>
@@ -62,19 +58,17 @@
       </div>
 
       <p class="legend" id="directory-legend">
-        Green pills are methods someone can help you with. Use the chips to narrow by
-        school or method, or just search.
+        Green pills are the methods someone uses. Filter by one, or just search.
       </p>
 
       <p class="count" id="member-count" aria-live="polite"></p>
       <div class="people" id="member-results"></div>
 
       <div class="note hidden" id="directory-empty">
-        <h3>The directory opens with the community</h3>
+        <h3>Filling up from Autumn 2026</h3>
         <p>
-          (CSS)² kicks off in Autumn 2026. Add yourself now and you're listed from day one — with
-          the methods you can help with and the data you work on, which is how people will find
-          you.
+          Add yourself and you're on the list from day one. It costs two minutes and it's the
+          simplest way for someone in another school to find out you exist.
         </p>
         <p><a class="btn btn--sm" href="#" data-form-link>Add yourself</a></p>
       </div>
@@ -85,7 +79,8 @@
     <div class="wrap">
       <div class="panel">
         <h2>Add yourself</h2>
-        <p>Two minutes, and it makes the directory more useful for everyone else too.</p>
+        <p>The list is only as good as it is complete — every entry makes it easier for everyone
+          else to see who's around.</p>
         <div class="panel__actions">
           <a class="btn btn--cream" href="#" data-form-link>Join (CSS)²</a>
           <a class="btn btn--ghost" href="#" data-slack-link>Join the Slack</a>

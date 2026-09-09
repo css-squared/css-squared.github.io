@@ -65,42 +65,49 @@ response into `MEMBERS` in `data/members.js`:
 ```js
 {
   name: "Jane Doe",
-  role: "PhD Student",
-  unit: "Management Science & Engineering",
-  school: "Engineering",
+  program: "PhD Student, Management Science & Engineering",
   blurb: "Modelling how misinformation spreads through campus networks.",
   methods: ["Network analysis", "Simulation & agent-based modeling"],
-  seeking: true,
   link: "",
   photo: ""
 },
 ```
 
-Only `name` is required; everything else degrades quietly.
+Only `name` is required; everything else degrades quietly. `blurb` is capped at
+300 characters on the form — longer text won't break the layout, but the cards
+in a row stretch to match the tallest one, so keep it tight.
 
-Two things that matter:
-
-- **`school` must exactly match a value in the `SCHOOLS` list** at the top of
-  the file. A near-miss like `"Humanities & Sciences"` fails silently — the
-  person still appears, but the school chip never finds them.
-- **`methods` should come from `METHOD_OPTIONS`**, also at the top of that
-  file. That list is the same one the form offers as checkboxes; keep the two in
-  step. Filter chips appear in `METHOD_OPTIONS` order, and anything typed into
-  the form's "Other" box still works — it's just listed after them.
+**`methods` must match `METHOD_OPTIONS`** at the top of that file, which is the
+same list the form offers as checkboxes (form allows up to 3). Keep the two in
+step: filter chips render in `METHOD_OPTIONS` order, so the directory looks the
+same week to week, and a label that doesn't match exactly turns into its own
+chip. Anything typed into the form's "Other" box still works — it just lists
+after the canonical ones, alphabetically.
 
 ### Photos
 
-Optional, and only worth it for the organizers on the home page. Crop square,
-save around 200x200, drop it in `img/people/`, and point at it:
+**Google Drive links cannot be used directly.** A form file-upload lands in
+Drive, and Drive's image URLs are private by default, rate-limited when
+hot-linked, and Google keeps changing the format. So photos get copied into the
+repo instead.
 
-```js
-photo: "img/people/daniel.jpg"
+Download the image, then:
+
+```
+python tools/add_photo.py ~/Downloads/whatever.jpg "Jane Doe"
 ```
 
-Leave `photo` empty and you get a pastel circle with the person's initials,
-which is what members get by default. Both render at exactly the same size, so
-a card with a face and a card without sit level. Anything that isn't a real
-image path is ignored rather than rendered.
+That crops it square from the centre, resizes to 320x320, strips EXIF, saves an
+optimised JPEG into `img/people/`, and prints the line to paste in:
+
+```js
+photo: "img/people/jane-doe.jpg",
+```
+
+Needs Pillow (`pip install Pillow`). Leave `photo` empty and you get a pastel
+circle with the person's initials instead — that's the default, and it's what
+most members will have. Both render at exactly the same size, so a card with a
+face and a card without sit level.
 
 ## Publishing
 

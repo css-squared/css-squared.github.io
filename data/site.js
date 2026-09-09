@@ -26,15 +26,13 @@ const SITE = {
 const ORGANIZERS = [
   {
     name: "Daniel Verdi",
-    role: "PhD Student",
-    unit: "Education Data Science",
+    program: "PhD Student, Education Data Science",
     link: "",
     photo: ""
   },
   {
     name: "Ruishi Chen",
-    role: "PhD Student",
-    unit: "Education Data Science",
+    program: "PhD Student, Education Data Science",
     link: "",
     photo: ""
   }
