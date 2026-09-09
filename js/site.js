@@ -87,9 +87,16 @@
 
     var program = esc(p.program || "");
 
+    var badge = p.organizer
+      ? '<span class="person__badge">Organizer</span>'
+      : "";
+
     return (
       '<article class="person">' +
+      '<div class="person__face">' +
       face +
+      badge +
+      "</div>" +
       '<div class="person__body">' +
       '<h3 class="person__name">' +
       linked(p.name, p.link) +
@@ -221,23 +228,6 @@
       .join("");
   }
 
-  /* --- organizers ------------------------------------------------------- */
-
-  function renderOrganizers() {
-    var host = el("organizers");
-    if (!host) return;
-    var people = typeof ORGANIZERS !== "undefined" && Array.isArray(ORGANIZERS) ? ORGANIZERS : [];
-    if (!people.length) {
-      host.classList.add("hidden");
-      return;
-    }
-    host.innerHTML = people
-      .map(function (p, i) {
-        return personHtml(p, i);
-      })
-      .join("");
-  }
-
   /* --- member directory ------------------------------------------------- */
 
   function memberHtml(m) {
@@ -267,6 +257,13 @@
       return;
     }
     if (emptyState) emptyState.classList.add("hidden");
+
+    // Organizers first, then everyone else in file order. Sorting here rather
+    // than relying on the order of data/members.js means adding someone at the
+    // top of that file can't accidentally bury the organizers.
+    members = members.slice().sort(function (a, b) {
+      return (a.organizer ? 0 : 1) - (b.organizer ? 0 : 1);
+    });
 
     // Tint is assigned once, so a person's circle colour doesn't change
     // when the list is filtered.
@@ -512,7 +509,6 @@
         "has happened, its slides, notes, and reading lists show up here.</p></div>"
     );
 
-    renderOrganizers();
     setupDirectory();
     renderGlossary();
     renderCanon();

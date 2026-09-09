@@ -1,15 +1,20 @@
 /* ---------------------------------------------------------------------------
    MEMBER DIRECTORY DATA
 
-   Each member looks like this:
+   Organizers live in here too — they're members with `organizer: true`, which
+   just puts a small "Organizer" badge under their initials and floats them to
+   the top of the list.
+
+   Each entry looks like this:
 
    {
-     name:    "Full Name",
-     program: "PhD Student, Sociology",    // programme, department, or lab
-     blurb:   "One or two lines on what they work on.",   // 300 chars max
-     methods: ["Network analysis"],         // up to 3, from METHOD_OPTIONS
-     link:    "https://...",                // optional: profile or personal site
-     photo:   ""                            // optional: leave empty for initials
+     name:      "Full Name",
+     program:   "PhD Student, Sociology",   // programme, department, or lab
+     blurb:     "One or two lines on what they work on.",   // 300 chars max
+     methods:   ["Network analysis"],        // up to 3, from METHOD_OPTIONS
+     link:      "https://...",               // optional: profile or site
+     photo:     "",                          // optional: "" gives initials
+     organizer: true                         // optional, omit for members
    }
 
    Only `name` is required. Everything else degrades quietly — no blurb means
@@ -37,6 +42,28 @@ const METHOD_OPTIONS = [
 ];
 
 const MEMBERS = [
+  // TODO: add your own blurb and up to three methods — right now these two
+  // entries only carry a name and a programme, so the cards look emptier than
+  // everyone else's will once the form responses start arriving.
+  {
+    name: "Daniel Verdi",
+    program: "PhD Student, Education Data Science",
+    blurb: "",
+    methods: [],
+    link: "",
+    photo: "",
+    organizer: true
+  },
+  {
+    name: "Ruishi Chen",
+    program: "PhD Student, Education Data Science",
+    blurb: "",
+    methods: [],
+    link: "",
+    photo: "",
+    organizer: true
+  }
+
   // ---------------------------------------------------------------------
   // Members go here. Example of the exact shape (commented entries never
   // appear on the site):

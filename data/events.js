@@ -28,7 +28,7 @@ const EVENTS = [
     date: "TBD",
     title: "Kickoff + “Meet a Collaborator”",
     blurb:
-      "The launch of (CSS)². After a short introduction to the community, we run a structured matching session: everyone arrives tagged with what they bring — data, methods, or a research question — and leaves with the names of people whose expertise complements their own. Food provided.",
+      "The launch of (CSS)². An introduction to the community, followed by a structured session for meeting people working on related things in other departments. Food provided.",
     host: "",
     location: "",
     status: "upcoming",
