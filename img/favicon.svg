@@ -1,0 +1,6 @@
+<!-- Two overlapping rounded stickers, staggered: the two halves of the field,
+     and "squared". Matches the nav mark and the home-page lockup. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect x="2" y="21" width="31" height="31" rx="10.5" fill="#FFE6A3"/>
+  <rect x="28" y="12" width="31" height="31" rx="10.5" fill="#8C1515" stroke="#FFF9F3" stroke-width="4"/>
+</svg>

@@ -1,0 +1,7 @@
+# Local machine settings, not site content
+.claude/settings.local.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
