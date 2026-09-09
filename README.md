@@ -1,6 +1,6 @@
-# CSS² website
+# (CSS)² website
 
-Static site for **CSS² — Computational Social Science Community Space at Stanford**.
+Static site for **(CSS)² — Computational Social Science Community Space at Stanford**.
 Plain HTML and CSS with no build step, no framework, and no dependencies. Open
 `index.html` in a browser and it works.
 
@@ -8,7 +8,7 @@ Plain HTML and CSS with no build step, no framework, and no dependencies. Open
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | What CSS² is, the five kinds of gathering, organizers, join |
+| `index.html` | What (CSS)² is, the five kinds of gathering, organizers, join |
 | `events.html` | Upcoming schedule, past sessions with slides/notes |
 | `resources.html` | Shared glossary, CSS Canon, related Stanford programs |
 | `directory.html` | Searchable member directory, filterable by school / method / data |

@@ -1,5 +1,5 @@
 /* ===========================================================================
-   CSS² site scripts.
+   (CSS)² site scripts.
 
    Everything is rendered from the files in /data. You should never need to
    edit this file to add an event, a member, an organizer, or a resource.
@@ -501,7 +501,7 @@
     renderEvents(
       el("events-past"),
       "past",
-      '<div class="note"><h3>Nothing yet</h3><p>CSS² kicks off in Autumn 2026. Once a session ' +
+      '<div class="note"><h3>Nothing yet</h3><p>(CSS)² kicks off in Autumn 2026. Once a session ' +
         "has happened, its slides, notes, and reading lists show up here.</p></div>"
     );
 
