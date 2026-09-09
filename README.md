@@ -98,19 +98,41 @@ this scale.
 
 ## Publishing
 
-The site is static files, so almost anything will host it. Simplest path:
+The site is hosted on GitHub Pages from the `main` branch, root folder. It is
+plain static files with no build step, so there is nothing to compile and no
+deploy pipeline to babysit.
 
-1. Create a GitHub repository and put these files in it.
-2. Repository **Settings → Pages → Source: deploy from branch**, branch `main`,
+**To publish a change:** edit the data file, then
+
+```
+git add -A
+git commit -m "Update schedule"
+git push
+```
+
+Pages redeploys on its own, usually within a minute. Hard-refresh
+(Ctrl+Shift+R) if you don't see it immediately — browsers cache the data files.
+
+**First-time setup**, for reference:
+
+1. Create an empty repo named `css-squared` on github.com (no README, no
+   `.gitignore` — this repo already has both).
+2. `git remote add origin https://github.com/<user>/css-squared.git`
+3. `git push -u origin main`
+4. Repo **Settings → Pages → Source: Deploy from a branch**, branch `main`,
    folder `/ (root)`.
-3. It goes live at `https://<user-or-org>.github.io/<repo>/` in a minute or two.
 
-To publish an edit afterwards: change the data file, commit, push. Pages
-redeploys on its own.
+Notes:
 
-If you later want a `stanford.edu` address, request a subdomain (something with a
-word in it — `cssquared.stanford.edu` reads better than anything with a bare 2)
-and point it at Pages with a `CNAME` file.
+- Every asset path in the HTML is relative (`css/site.css`, not
+  `/css/site.css`), which is what lets the site work from the
+  `/css-squared/` subpath Pages serves it from. If you ever add a link with a
+  leading slash, the stylesheet will break in production while still looking
+  fine locally.
+- `.nojekyll` tells Pages to serve the files as-is instead of running them
+  through Jekyll. Leave it there.
+- If you later want a `stanford.edu` address, request a subdomain from
+  Stanford IT and point it at Pages with a `CNAME` file.
 
 ## Design notes
 
