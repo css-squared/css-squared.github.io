@@ -10,7 +10,7 @@ Plain HTML and CSS with no build step, no framework, and no dependencies. Open
 | --- | --- |
 | `index.html` | What (CSS)² is, the five kinds of gathering, join |
 | `events.html` | Upcoming schedule, past sessions with slides/notes |
-| `directory.html` | Organizers, then the searchable member list |
+| `directory.html` | The searchable member list, organizers included |
 | `resources.html` | **Hidden for now** — glossary, CSS Canon, related programs |
 
 `resources.html` is still in the repo and still live at its URL, but it isn't
@@ -26,7 +26,7 @@ comes from the four files in `data/`:
 
 | File | Holds |
 | --- | --- |
-| `data/site.js` | Registration form link, Slack invite link, contact email, organizers |
+| `data/site.js` | Registration form link, Slack invite link, contact email |
 | `data/events.js` | Every event, past and upcoming |
 | `data/members.js` | The approved member directory |
 | `data/resources.js` | Glossary terms, CSS Canon entries, related programs |
@@ -59,9 +59,9 @@ every "Join the Slack" button hides itself, so there are no dead links on the
 site while you're waiting for the workspace. Same for `contactEmail`: set it and
 a contact line appears in the footer, leave it blank and nothing shows.
 
-**Add an organizer** — copy a block into `ORGANIZERS` in `data/site.js`. They
-appear in their own block at the top of the members page, in the same card
-style as members.
+**Add an organizer** — organizers are just members with `organizer: true` in
+`data/members.js`. That puts a small "Organizer" badge under their initials and
+sorts them to the top of the list, wherever they happen to sit in the file.
 
 ## Adding members
 
@@ -76,7 +76,8 @@ response into `MEMBERS` in `data/members.js`:
   blurb: "Modelling how misinformation spreads through campus networks.",
   methods: ["Network analysis", "Simulation & agent-based modeling"],
   link: "",
-  photo: ""
+  photo: "",
+  organizer: false   // omit entirely for ordinary members
 },
 ```
 
@@ -190,6 +191,9 @@ coherent.
 - Type: **Bricolage Grotesque** for headings (it has personality without being
   cute-for-its-own-sake), **Plus Jakarta Sans** for reading. Both from Google
   Fonts with system fallbacks, so the site still reads offline.
+- **Funding acknowledgement.** The VPGE/SPICE line sits in every footer as
+  `.footer__funding`. If a second funder turns up, add it there rather than
+  inventing a new spot for it.
 
 ## Other notes
 
