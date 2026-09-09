@@ -56,20 +56,11 @@ a contact line appears in the footer, leave it blank and nothing shows.
 **Add an organizer** — copy a block into `ORGANIZERS` in `data/site.js`. They
 appear in the Organizers drawer on the home page.
 
-## Member approval workflow
+## Adding members
 
-The registration form is public, so **nothing reaches the directory without you
-approving it.** There is no automatic sync — that's deliberate.
-
-1. A response lands in the form's Google Sheet.
-2. Check Stanford affiliation. Two things make this much easier:
-   - In Google Forms, turn on **Settings → Responses → Restrict to users in
-     Stanford University** and **Collect email addresses**. That blocks
-     non-Stanford accounts at the door rather than at your desk.
-   - Add an `Approved` column to the sheet and mark rows `yes` as you clear them,
-     so you always know where you stopped.
-3. For each approved person who opted into the directory, copy a block into
-   `MEMBERS` in `data/members.js`:
+The Google Form is restricted to Stanford accounts, so affiliation is checked
+at the door rather than by you. Nothing is auto-synced yet — for now, copy each
+response into `MEMBERS` in `data/members.js`:
 
 ```js
 {
@@ -77,24 +68,39 @@ approving it.** There is no automatic sync — that's deliberate.
   role: "PhD Student",
   unit: "Management Science & Engineering",
   school: "Engineering",
-  methods: ["Network analysis", "Agent-based modeling"],
-  data: ["Organizational records"],
+  blurb: "Modelling how misinformation spreads through campus networks.",
+  methods: ["Network analysis", "Simulation & agent-based modeling"],
   seeking: true,
-  link: ""
+  link: "",
+  photo: ""
 },
 ```
 
-4. Save and publish.
+Only `name` is required; everything else degrades quietly.
 
-Two rules that keep the directory useful:
+Two things that matter:
 
-- **Reuse tags.** `"NLP"` and `"Natural language processing"` become two separate
-  filter chips that each match half the people. Pick one spelling and stick to it.
-- **`school`** must be one of the values in the `SCHOOLS` list at the top of
-  `data/members.js`, or the school filter won't pick it up.
+- **`school` must exactly match a value in the `SCHOOLS` list** at the top of
+  the file. A near-miss like `"Humanities & Sciences"` fails silently — the
+  person still appears, but the school chip never finds them.
+- **`methods` should come from `METHOD_OPTIONS`**, also at the top of that
+  file. That list is the same one the form offers as checkboxes; keep the two in
+  step. Filter chips appear in `METHOD_OPTIONS` order, and anything typed into
+  the form's "Other" box still works — it's just listed after them.
 
-Batching this once a week is fine, and cheaper than any automation would be at
-this scale.
+### Photos
+
+Optional, and only worth it for the organizers on the home page. Crop square,
+save around 200x200, drop it in `img/people/`, and point at it:
+
+```js
+photo: "img/people/daniel.jpg"
+```
+
+Leave `photo` empty and you get a pastel circle with the person's initials,
+which is what members get by default. Both render at exactly the same size, so
+a card with a face and a card without sit level. Anything that isn't a real
+image path is ignored rather than rendered.
 
 ## Publishing
 

@@ -1,29 +1,26 @@
 /* ---------------------------------------------------------------------------
    MEMBER DIRECTORY DATA
 
-   Only add people here AFTER you have approved their form response. Nothing
-   in this file is generated automatically — this is the manual gate.
-
    Each member looks like this:
 
    {
      name:    "Full Name",
-     role:    "PhD Student",              // PhD Student / Postdoc / Faculty / Staff / Masters Student
+     role:    "PhD Student",              // PhD / Masters Student, Postdoc, Faculty, Staff
      unit:    "Sociology",                // department, lab, or program
-     school:  "H&S",                      // see SCHOOLS below — used for the filter chips
-     methods: ["NLP", "Causal inference"], // what they can help others with
-     data:    ["Social media", "Admin records"], // domains / data they work with
-     seeking: true,                        // true = actively looking for collaborators
-     link:    "https://..."                // optional: personal site or profile
+     school:  "H&S",                      // must match a value in SCHOOLS below
+     blurb:   "One sentence on what they're working on.",
+     methods: ["Causal inference"],        // what they can help others with
+     seeking: true,                        // true = looking for collaborators
+     link:    "https://...",               // optional: profile or personal site
+     photo:   ""                           // optional: leave empty for initials
    }
 
-   Keep methods and data tags SHORT and REUSE existing tags where you can —
-   the filters are only useful if the same idea isn't spelled three ways.
-
-   To add someone: copy a block, paste it inside the [ ] below, save, publish.
+   Only `name` is required. Everything else degrades quietly — no blurb means
+   no sentence, no methods means no pills, no photo means a pastel circle with
+   the person's initials.
 --------------------------------------------------------------------------- */
 
-// Used for the school filter. Order here is the order shown on the page.
+/* School filter. Order here is the order the chips appear in. */
 const SCHOOLS = [
   "H&S",
   "Engineering",
@@ -35,20 +32,40 @@ const SCHOOLS = [
   "Other"
 ];
 
+/* The canonical method list — KEEP THIS IN STEP WITH THE FORM'S CHECKBOXES.
+   Filter chips appear in this order, so the directory looks the same from one
+   week to the next. Anything a member typed into the form's "Other" box still
+   works: it just gets listed after these, alphabetically. */
+const METHOD_OPTIONS = [
+  "Text as data / NLP",
+  "LLMs in research",
+  "Network analysis",
+  "Machine learning & prediction",
+  "Causal inference",
+  "Experiments",
+  "Simulation & agent-based modeling",
+  "Bayesian & statistical modeling",
+  "Measurement & survey design",
+  "Geospatial analysis",
+  "Images, audio & video as data",
+  "Data collection (scraping, APIs)"
+];
+
 const MEMBERS = [
   // ---------------------------------------------------------------------
-  // Approved members go here. Example of the exact shape (delete or leave
-  // commented — commented entries never appear on the site):
+  // Members go here. Example of the exact shape (commented entries never
+  // appear on the site):
   //
   // {
   //   name: "Jane Doe",
   //   role: "PhD Student",
   //   unit: "Management Science & Engineering",
   //   school: "Engineering",
-  //   methods: ["Network analysis", "Agent-based modeling"],
-  //   data: ["Organizational records"],
+  //   blurb: "Modelling how misinformation spreads through campus networks.",
+  //   methods: ["Network analysis", "Simulation & agent-based modeling"],
   //   seeking: true,
-  //   link: ""
+  //   link: "",
+  //   photo: ""
   // },
   // ---------------------------------------------------------------------
 ];

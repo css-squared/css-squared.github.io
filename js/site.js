@@ -41,6 +41,19 @@
     );
   }
 
+  /* Photos may be an https URL or a path inside the repo (img/people/x.jpg),
+     so this is deliberately looser than isSafeUrl but still refuses
+     protocol-relative and javascript: values. */
+  function isSafeImage(src) {
+    if (typeof src !== "string" || !src.trim()) return false;
+    var v = src.trim();
+    var hasScheme = /^[a-z][a-z0-9+.-]*:/i.test(v);
+    if (v.indexOf("//") === 0 || (hasScheme && !/^https:\/\//i.test(v))) {
+      return false;
+    }
+    return /\.(png|jpe?g|webp|avif|gif|svg)$/i.test(v);
+  }
+
   /* Up to two initials, for the pastel circle beside a person's name. */
   function initials(name) {
     var words = String(name || "")
@@ -62,20 +75,27 @@
   }
 
   function personHtml(p, index, extraHtml) {
+    var face = isSafeImage(p.photo)
+      ? '<img class="avatar avatar--photo" src="' +
+        esc(p.photo) +
+        '" alt="" loading="lazy" width="46" height="46">'
+      : '<span class="avatar ' +
+        avatarTint(index) +
+        '" aria-hidden="true">' +
+        esc(initials(p.name)) +
+        "</span>";
+
+    var role = [p.role, p.unit].filter(Boolean).map(esc).join(" · ");
+
     return (
       '<article class="person">' +
-      '<span class="avatar ' +
-      avatarTint(index) +
-      '" aria-hidden="true">' +
-      esc(initials(p.name)) +
-      "</span>" +
+      face +
       '<div class="person__body">' +
       '<h3 class="person__name">' +
       linked(p.name, p.link) +
       "</h3>" +
-      '<p class="person__role">' +
-      [p.role, p.unit].filter(Boolean).map(esc).join(" · ") +
-      "</p>" +
+      (role ? '<p class="person__role">' + role + "</p>" : "") +
+      (p.blurb ? '<p class="person__blurb">' + esc(p.blurb) + "</p>" : "") +
       (extraHtml || "") +
       "</div>" +
       "</article>"
@@ -228,9 +248,6 @@
     (m.methods || []).forEach(function (t) {
       pills.push('<li><span class="pill pill--method">' + esc(t) + "</span></li>");
     });
-    (m.data || []).forEach(function (t) {
-      pills.push('<li><span class="pill pill--data">' + esc(t) + "</span></li>");
-    });
 
     return personHtml(m, m._i, pills.length ? '<ul class="pills">' + pills.join("") + "</ul>" : "");
   }
@@ -267,15 +284,26 @@
       });
     });
 
-    var methodCounts = {};
+    var canonical = typeof METHOD_OPTIONS !== "undefined" ? METHOD_OPTIONS : [];
+    var used = {};
     members.forEach(function (m) {
       (m.methods || []).forEach(function (t) {
-        methodCounts[t] = (methodCounts[t] || 0) + 1;
+        used[t] = true;
       });
     });
-    var methodsInUse = Object.keys(methodCounts).sort(function (a, b) {
-      return methodCounts[b] - methodCounts[a] || a.localeCompare(b);
-    });
+    var methodsInUse = canonical
+      .filter(function (t) {
+        return used[t];
+      })
+      .concat(
+        Object.keys(used)
+          .filter(function (t) {
+            return canonical.indexOf(t) === -1;
+          })
+          .sort(function (a, b) {
+            return a.localeCompare(b);
+          })
+      );
 
     function chipRow(containerId, values, key) {
       var host = el(containerId);
@@ -355,8 +383,8 @@
         if (!has) return false;
       }
       if (state.query) {
-        var haystack = [m.name, m.role, m.unit, m.school]
-          .concat(m.methods || [], m.data || [])
+        var haystack = [m.name, m.role, m.unit, m.school, m.blurb]
+          .concat(m.methods || [])
           .filter(Boolean)
           .join(" ")
           .toLowerCase();

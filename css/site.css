@@ -696,11 +696,6 @@ a:hover {
   color: #2f5c46;
 }
 
-.pill--data {
-  background: var(--butter);
-  color: #6b5013;
-}
-
 .pill--seek {
   background: var(--cardinal);
   color: #fff;
@@ -783,6 +778,21 @@ a:hover {
   font-size: 0.86rem;
   color: var(--ink-3);
   margin: 0;
+}
+
+/* The one-line "what I'm working on" sentence. */
+.person__blurb {
+  font-size: 0.94rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+  margin: 0.4rem 0 0;
+}
+
+/* A real photo, when someone has one. Same circle as the initials, so a card
+   with a face and a card without sit at exactly the same size. */
+.avatar--photo {
+  object-fit: cover;
+  background: var(--line);
 }
 
 /* --- Filters ------------------------------------------------------------ */
