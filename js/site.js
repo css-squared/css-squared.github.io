@@ -49,6 +49,21 @@
     return String(text == null ? "" : text).replace(/\s*\([^)]*\)\s*$/, "");
   }
 
+  /* Each method gets its own pastel, keyed to its position in METHOD_OPTIONS
+     so a method is the same colour everywhere and from one visit to the next.
+     Free-text "Other" answers fall back to a hash of the label. */
+  function toneFor(method) {
+    var canonical = typeof METHOD_OPTIONS !== "undefined" ? METHOD_OPTIONS : [];
+    var i = canonical.indexOf(method);
+    if (i === -1) {
+      i = 0;
+      for (var c = 0; c < method.length; c++) {
+        i = (i * 31 + method.charCodeAt(c)) % 997;
+      }
+    }
+    return "tone-" + (i % 6);
+  }
+
   /* Photos may be an https URL or a path inside the repo (img/people/x.jpg),
      so this is deliberately looser than isSafeUrl but still refuses
      protocol-relative and javascript: values. */
@@ -101,18 +116,20 @@
 
     return (
       '<article class="person">' +
+      '<div class="person__head">' +
       '<div class="person__face">' +
       face +
       badge +
       "</div>" +
-      '<div class="person__body">' +
+      '<div class="person__id">' +
       '<h3 class="person__name">' +
       linked(p.name, p.link) +
       "</h3>" +
       (program ? '<p class="person__role">' + program + "</p>" : "") +
+      "</div>" +
+      "</div>" +
       (p.blurb ? '<p class="person__blurb">' + esc(p.blurb) + "</p>" : "") +
       (extraHtml || "") +
-      "</div>" +
       "</article>"
     );
   }
@@ -122,21 +139,25 @@
   function applySiteLinks() {
     var site = typeof SITE === "object" && SITE ? SITE : {};
 
-    document.querySelectorAll("[data-form-link]").forEach(function (node) {
-      if (isSafeUrl(site.formUrl)) {
-        node.setAttribute("href", site.formUrl);
-      } else {
+    // The form and Slack live off-site, so they open in a new tab — nobody
+    // should lose the page they were reading to go and register.
+    function external(node, url) {
+      if (!isSafeUrl(url)) {
         node.classList.add("hidden");
+        return;
       }
+      node.setAttribute("href", url);
+      node.setAttribute("target", "_blank");
+      node.setAttribute("rel", "noopener");
+    }
+
+    document.querySelectorAll("[data-form-link]").forEach(function (node) {
+      external(node, site.formUrl);
     });
 
     // Slack links hide themselves until a workspace invite exists.
     document.querySelectorAll("[data-slack-link]").forEach(function (node) {
-      if (isSafeUrl(site.slackUrl)) {
-        node.setAttribute("href", site.slackUrl);
-      } else {
-        node.classList.add("hidden");
-      }
+      external(node, site.slackUrl);
     });
 
     document.querySelectorAll("[data-contact-email]").forEach(function (node) {
@@ -242,7 +263,9 @@
     var pills = (m.methods || [])
       .map(function (t) {
         return (
-          '<li><span class="pill pill--method" title="' +
+          '<li><span class="pill ' +
+          toneFor(t) +
+          '" title="' +
           esc(t) +
           '">' +
           esc(shortLabel(t)) +
@@ -319,7 +342,9 @@
       host.innerHTML = values
         .map(function (v) {
           return (
-            '<button type="button" class="chip" aria-pressed="false" data-value="' +
+            '<button type="button" class="chip ' +
+            (key === "methods" ? toneFor(v) : "") +
+            '" aria-pressed="false" data-value="' +
             esc(v) +
             '" title="' +
             esc(v) +

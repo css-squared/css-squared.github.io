@@ -82,7 +82,7 @@ response into `MEMBERS` in `data/members.js`:
 ```
 
 Only `name` is required; everything else degrades quietly. `blurb` is capped at
-300 characters on the form — longer text won't break the layout, but the cards
+250 characters on the form — longer text won't break the layout, but the cards
 in a row stretch to match the tallest one, so keep it tight.
 
 **`methods` must match `METHOD_OPTIONS`** at the top of that file, which is the
@@ -191,6 +191,10 @@ coherent.
 - Type: **Bricolage Grotesque** for headings (it has personality without being
   cute-for-its-own-sake), **Plus Jakarta Sans** for reading. Both from Google
   Fonts with system fallbacks, so the site still reads offline.
+- **Every method has its own pastel**, keyed to its position in
+  `METHOD_OPTIONS` (see `toneFor()` in `js/site.js`), so a method is the same
+  colour on a card and on its filter chip, today and next term. Six tones cycle;
+  free-text "Other" answers get a colour from a hash of the label.
 - **Funding acknowledgement.** The VPGE/SPICE line sits in every footer as
   `.footer__funding`. If a second funder turns up, add it there rather than
   inventing a new spot for it.

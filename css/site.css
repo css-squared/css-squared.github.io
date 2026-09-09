@@ -25,6 +25,8 @@
   --blush-deep: #f2a9b6;
   --sky: #cfe2f8;
   --sky-deep: #9ec4ef;
+  --lilac: #e1d8f7;
+  --peach: #ffd9c2;
 
   --page: #fff9f3;
   --surface: #ffffff;
@@ -695,9 +697,45 @@ a:hover {
   color: var(--ink-2);
 }
 
-.pill--method {
+/* One tone per method — see toneFor() in js/site.js. Used by both the pills on
+   a card and the filter chips, so a method reads the same in both places.
+   Doubled-up selectors on purpose: .chip sets its own background further down,
+   and these need to beat it regardless of source order. The pressed state
+   still wins, because [aria-pressed] adds specificity on top. */
+.pill.tone-0,
+.chip.tone-0 {
   background: var(--mint);
-  color: #2f5c46;
+  color: #2c5941;
+}
+
+.pill.tone-1,
+.chip.tone-1 {
+  background: var(--sky);
+  color: #23496f;
+}
+
+.pill.tone-2,
+.chip.tone-2 {
+  background: var(--blush);
+  color: #8a3346;
+}
+
+.pill.tone-3,
+.chip.tone-3 {
+  background: var(--butter);
+  color: #6b5013;
+}
+
+.pill.tone-4,
+.chip.tone-4 {
+  background: var(--lilac);
+  color: #493776;
+}
+
+.pill.tone-5,
+.chip.tone-5 {
+  background: var(--peach);
+  color: #8a4620;
 }
 
 .pill--link {
@@ -720,9 +758,7 @@ a:hover {
 }
 
 .person {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
+  display: block;
   background: var(--surface);
   border-radius: var(--r-md);
   padding: 1.1rem 1.2rem 1.2rem;
@@ -733,6 +769,18 @@ a:hover {
 .person:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
+}
+
+/* Name and face sit on one row; the blurb and pills run the full card width
+   underneath, which a 250-character bio needs. */
+.person__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.person__id {
+  min-width: 0;
 }
 
 /* Avatar column: the circle, with room for a badge underneath. Fixed width so
@@ -786,10 +834,6 @@ a:hover {
   background: var(--sky);
 }
 
-.person__body {
-  min-width: 0;
-}
-
 .person__name {
   font-family: var(--display);
   font-weight: 700;
@@ -807,9 +851,9 @@ a:hover {
 /* The one-line "what I'm working on" sentence. */
 .person__blurb {
   font-size: 0.94rem;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--ink-2);
-  margin: 0.4rem 0 0;
+  margin: 0.75rem 0 0;
 }
 
 /* A real photo, when someone has one. Same circle as the initials, so a card
@@ -861,12 +905,14 @@ a:hover {
 
 .chip:hover {
   color: var(--ink);
-  background: var(--butter);
+  filter: brightness(0.96);
 }
 
-.chip[aria-pressed="true"] {
+.chip[aria-pressed="true"],
+.chip[aria-pressed="true"]:hover {
   background: var(--cardinal);
   color: #fff;
+  filter: none;
 }
 
 .search {

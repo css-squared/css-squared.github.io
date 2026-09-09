@@ -10,7 +10,7 @@
    {
      name:      "Full Name",
      program:   "PhD Student, Sociology",   // programme, department, or lab
-     blurb:     "One or two lines on what they work on.",   // 300 chars max
+     blurb:     "One or two lines on what they work on.",   // 250 chars max
      methods:   ["Network analysis"],        // up to 3, from METHOD_OPTIONS
      link:      "https://...",               // optional: profile or site
      photo:     "",                          // optional: "" gives initials
@@ -46,9 +46,9 @@ const MEMBERS = [
     name: "Daniel Verdi",
     program: "PhD Student, Education Data Science",
     blurb:
-      "Working on science communication and political communication. Particularly interested " +
-      "in how scientific and technological knowledge gets communicated and governed, " +
-      "especially in digital environments.",
+      "Science communication, social computing, and AI ethics. Studying how scientific and " +
+      "technological knowledge gets communicated and governed. Particularly interested in " +
+      "digital environments like AI and social media.",
     methods: [
       "Text as data/NLP",
       "Network analysis",
