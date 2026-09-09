@@ -41,6 +41,14 @@
     );
   }
 
+  /* Method labels match the form exactly, which means some carry a long
+     parenthetical ("LLMs in research (annotation, synthetic data, agents)").
+     Pills and chips show the short form; the full label stays in the data, in
+     the tooltip, and in search. */
+  function shortLabel(text) {
+    return String(text == null ? "" : text).replace(/\s*\([^)]*\)\s*$/, "");
+  }
+
   /* Photos may be an https URL or a path inside the repo (img/people/x.jpg),
      so this is deliberately looser than isSafeUrl but still refuses
      protocol-relative and javascript: values. */
@@ -233,7 +241,13 @@
   function memberHtml(m) {
     var pills = (m.methods || [])
       .map(function (t) {
-        return '<li><span class="pill pill--method">' + esc(t) + "</span></li>";
+        return (
+          '<li><span class="pill pill--method" title="' +
+          esc(t) +
+          '">' +
+          esc(shortLabel(t)) +
+          "</span></li>"
+        );
       })
       .join("");
 
@@ -307,8 +321,10 @@
           return (
             '<button type="button" class="chip" aria-pressed="false" data-value="' +
             esc(v) +
-            '">' +
+            '" title="' +
             esc(v) +
+            '">' +
+            esc(shortLabel(v)) +
             "</button>"
           );
         })

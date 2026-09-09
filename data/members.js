@@ -42,18 +42,23 @@ const METHOD_OPTIONS = [
 ];
 
 const MEMBERS = [
-  // TODO: add your own blurb and up to three methods — right now these two
-  // entries only carry a name and a programme, so the cards look emptier than
-  // everyone else's will once the form responses start arriving.
   {
     name: "Daniel Verdi",
     program: "PhD Student, Education Data Science",
-    blurb: "",
-    methods: [],
+    blurb:
+      "Working on science communication and political communication. Particularly interested " +
+      "in how scientific and technological knowledge gets communicated and governed, " +
+      "especially in digital environments.",
+    methods: [
+      "Text as data/NLP",
+      "Network analysis",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
     link: "",
     photo: "",
     organizer: true
   },
+  // TODO: Ruishi's blurb and methods — this card stays sparse until they're in.
   {
     name: "Ruishi Chen",
     program: "PhD Student, Education Data Science",
