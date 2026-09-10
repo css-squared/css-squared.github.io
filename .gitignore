@@ -1,6 +1,10 @@
 # Local machine settings, not site content
 .claude/settings.local.json
 
+# Full-size headshots before tools/add_photo.py shrinks them. Kept on disk so
+# you can re-crop later, but never shipped — they're 50x the size the site needs.
+img/people/_originals/
+
 # OS junk
 .DS_Store
 Thumbs.db

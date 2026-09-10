@@ -54,8 +54,8 @@ const MEMBERS = [
       "Network analysis",
       "LLMs in research (annotation, synthetic data, agents)"
     ],
-    link: "",
-    photo: "",
+    link: "https://daniel-verdi.github.io/",
+    photo: "img/people/daniel-verdi.jpg",
     organizer: true
   },
   // TODO: Ruishi's blurb and methods — this card stays sparse until they're in.
