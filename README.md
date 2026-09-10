@@ -112,6 +112,10 @@ optimised JPEG into `img/people/`, and prints the line to paste in:
 photo: "img/people/jane-doe.jpg",
 ```
 
+Park the full-size original in `img/people/_originals/` — that folder is
+gitignored, so you keep it for a future re-crop without shipping a 500KB file
+to every visitor.
+
 Needs Pillow (`pip install Pillow`). Leave `photo` empty and you get a pastel
 circle with the person's initials instead — that's the default, and it's what
 most members will have. Both render at exactly the same size, so a card with a
