@@ -787,9 +787,9 @@ a:hover {
    a card with a badge and one without still line up. */
 .person__face {
   flex: none;
-  /* Wide enough for the "Organizer" badge, which is wider than the circle.
-     Fixed, so names line up across cards whether or not there's a badge. */
-  width: 4.6rem;
+  /* Wide enough for both the avatar and the "Organizer" badge. Fixed, so
+     names line up across cards whether or not there's a badge. */
+  width: 4.9rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -808,18 +808,35 @@ a:hover {
   white-space: nowrap;
 }
 
+/* Rounded squares rather than circles — same shape language as the two
+   squares in the logo, and they sit slightly askew like the hero stickers.
+   They straighten when you hover the card. */
 .avatar {
   flex: none;
-  width: 2.9rem;
-  height: 2.9rem;
-  border-radius: 999px;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1.25rem;
   display: grid;
   place-items: center;
   font-family: var(--display);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.35rem;
   color: #4a4038;
   background: var(--butter);
+  transform: rotate(-3deg);
+  transition: transform 0.18s ease;
+}
+
+.person:hover .avatar {
+  transform: rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar,
+  .person:hover .avatar {
+    transform: none;
+    transition: none;
+  }
 }
 
 .avatar--1 {
@@ -861,6 +878,11 @@ a:hover {
 .avatar--photo {
   object-fit: cover;
   background: var(--line);
+}
+
+/* The name sits level with the top of a taller avatar now. */
+.person__name {
+  margin-top: 0.2rem;
 }
 
 /* --- Filters ------------------------------------------------------------ */

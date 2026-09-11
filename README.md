@@ -177,7 +177,7 @@ coherent.
 - **The bento is deliberately not a uniform grid.** Six columns; the tiles are
   two wide (span 3) and three small (span 2). If you add a tile, keep each row
   adding to 6 or you'll get a ragged gap.
-- **People are pastel initial circles**, tinted by position so a member's
+- **People are pastel initial squircles**, tinted by position so a member's
   colour doesn't change when the list is filtered. No placeholder avatars, and
   no photo uploads to chase.
 - **The hero sticker cluster** is what people actually turn up holding — it's

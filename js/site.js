@@ -101,7 +101,7 @@
     var face = isSafeImage(p.photo)
       ? '<img class="avatar avatar--photo" src="' +
         esc(p.photo) +
-        '" alt="" loading="lazy" width="46" height="46">'
+        '" alt="" loading="lazy" width="64" height="64">'
       : '<span class="avatar ' +
         avatarTint(index) +
         '" aria-hidden="true">' +
@@ -284,13 +284,11 @@
     var members = typeof MEMBERS !== "undefined" && Array.isArray(MEMBERS) ? MEMBERS : [];
     var emptyState = el("directory-empty");
     var controls = el("directory-controls");
-    var legend = el("directory-legend");
     var count = el("member-count");
 
     if (!members.length) {
       if (emptyState) emptyState.classList.remove("hidden");
       if (controls) controls.classList.add("hidden");
-      if (legend) legend.classList.add("hidden");
       return;
     }
     if (emptyState) emptyState.classList.add("hidden");
