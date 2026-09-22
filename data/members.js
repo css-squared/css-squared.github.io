@@ -67,6 +67,66 @@ const MEMBERS = [
     link: "",
     photo: "",
     organizer: true
+  },
+
+  {
+    name: "Muhua Huang",
+    program: "PhD Student, Organizational Behavior",
+    blurb: "",
+    methods: [
+      "Text as data/NLP",
+      "Images, audio & video as data",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    link: "https://www.linkedin.com/in/muhua-huang-0311a2177",
+    photo: "img/people/muhua-huang.jpg"
+  },
+  {
+    name: "Marie Wako",
+    program: "JSD Candidate",
+    blurb:
+      "Marie Wako is a JSD candidate at Stanford Law School. She combines empirical legal " +
+      "studies and computational text analysis to examine how race and gender shape legal " +
+      "institutions and everyday legal processes in the US and Japan.",
+    methods: [
+      "Text as data/NLP",
+      "Causal inference (quasi-experimental)",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    link: "",
+    photo: "img/people/marie-wako.jpg"
+  },
+  {
+    name: "Kath Landgren",
+    program: "Postdoc, Environmental Social Sciences",
+    blurb:
+      "Ekaterina (Kath) Landgren is a Dean’s Postdoctoral Fellow at the Stanford Doerr " +
+      "School of Sustainability. She holds a PhD in Applied Mathematics. She uses mathematical " +
+      "modeling and data science to study how people think about climate change.",
+    methods: [
+      "Text as data/NLP",
+      "Experiments (field, lab, survey)",
+      "Simulation & agent-based modeling"
+    ],
+    // The form answer was "kathlandgren.com" with no scheme, which the link
+    // check rejects. Added https:// so the name is clickable.
+    link: "https://kathlandgren.com",
+    photo: "img/people/kath-landgren.jpg"
+  },
+  {
+    name: "Yuka Machino",
+    program: "PhD Student, Computer Science",
+    blurb:
+      "I am advised by Prof. Robert Hawkins, and Prof. Douglas Guilbeault. I combine " +
+      "behavioral experiments with computational models to understand how social norms and " +
+      "common ground help individuals in a community coordinate and communicate.",
+    methods: [
+      "Text as data/NLP",
+      "Experiments (field, lab, survey)",
+      "Simulation & agent-based modeling"
+    ],
+    link: "https://yukam997.github.io/",
+    photo: ""
   }
 
   // ---------------------------------------------------------------------
