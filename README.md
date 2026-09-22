@@ -197,8 +197,14 @@ coherent.
   Fonts with system fallbacks, so the site still reads offline.
 - **Every method has its own pastel**, keyed to its position in
   `METHOD_OPTIONS` (see `toneFor()` in `js/site.js`), so a method is the same
-  colour on a card and on its filter chip, today and next term. Six tones cycle;
-  free-text "Other" answers get a colour from a hash of the label.
+  colour on a card and on its filter chip, today and next term. There is one
+  tone per method — **if you add a twelfth method to the form, add a twelfth
+  `.pill.tone-11` / `.chip.tone-11` pair** to `css/site.css`, or it will render
+  in the neutral pill. Hues run round the wheel and lightness is varied so the
+  near neighbours separate on more than hue; every pair clears 6.9:1 contrast,
+  since the pills are small. A free-text "Other" answer deliberately gets the
+  neutral pill rather than a colour — that way it can't be mistaken for one of
+  the real methods, and off-list tags are easy to spot when tidying.
 - **Funding acknowledgement.** The VPGE/SPICE line sits in every footer as
   `.footer__funding`. If a second funder turns up, add it there rather than
   inventing a new spot for it.

@@ -49,19 +49,19 @@
     return String(text == null ? "" : text).replace(/\s*\([^)]*\)\s*$/, "");
   }
 
-  /* Each method gets its own pastel, keyed to its position in METHOD_OPTIONS
+  /* Each method gets its own pastel, keyed to its position in METHOD_OPTIONS,
      so a method is the same colour everywhere and from one visit to the next.
-     Free-text "Other" answers fall back to a hash of the label. */
+     There is one tone per method in the stylesheet, so no two methods on the
+     form share a colour.
+
+     A free-text "Other" answer gets no tone: it renders in the plain neutral
+     pill. That's deliberate — inventing a colour for it would collide with one
+     of the real methods, and the neutral pill makes an off-list tag easy to
+     spot when you're tidying tags. */
   function toneFor(method) {
     var canonical = typeof METHOD_OPTIONS !== "undefined" ? METHOD_OPTIONS : [];
     var i = canonical.indexOf(method);
-    if (i === -1) {
-      i = 0;
-      for (var c = 0; c < method.length; c++) {
-        i = (i * 31 + method.charCodeAt(c)) % 997;
-      }
-    }
-    return "tone-" + (i % 6);
+    return i === -1 ? "" : "tone-" + i;
   }
 
   /* Photos may be an https URL or a path inside the repo (img/people/x.jpg),

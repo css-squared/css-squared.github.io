@@ -697,56 +697,84 @@ a:hover {
   color: var(--ink-2);
 }
 
-/* One tone per method — see toneFor() in js/site.js. Used by both the pills on
-   a card and the filter chips, so a method reads the same in both places.
-   Doubled-up selectors on purpose: .chip sets its own background further down,
-   and these need to beat it regardless of source order. The pressed state
-   still wins, because [aria-pressed] adds specificity on top. */
+/* One tone per method — see toneFor() in js/site.js, which keys these to a
+   method's position in METHOD_OPTIONS. There are as many tones as there are
+   methods, so no two methods share a colour; add a twelfth method and you
+   need a twelfth tone here.
+
+   Hues run round the wheel, and lightness is varied on purpose so the near
+   neighbours (the two blues, the two purples) separate on more than hue.
+   Every pair below clears 6.9:1 against its text colour — the pills are small,
+   so AA alone wasn't enough.
+
+   Doubled-up selectors: .chip sets its own background further down, and these
+   need to beat it regardless of source order. The pressed state still wins,
+   because [aria-pressed] adds specificity on top. */
+
 .pill.tone-0,
 .chip.tone-0 {
-  background: var(--mint);
-  color: #2c5941;
+  background: #c7e9d6;
+  color: #1d4a37;
 }
 
 .pill.tone-1,
 .chip.tone-1 {
-  background: var(--sky);
-  color: #23496f;
+  background: #ffdcc4;
+  color: #743a18;
 }
 
 .pill.tone-2,
 .chip.tone-2 {
-  background: var(--blush);
-  color: #8a3346;
+  background: #cfe0fa;
+  color: #1f4373;
 }
 
 .pill.tone-3,
 .chip.tone-3 {
-  background: var(--butter);
-  color: #6b5013;
+  background: #ffe6a3;
+  color: #5d450d;
 }
 
 .pill.tone-4,
 .chip.tone-4 {
-  background: var(--lilac);
-  color: #493776;
+  background: #e6daf8;
+  color: #4b3480;
 }
 
 .pill.tone-5,
 .chip.tone-5 {
-  background: var(--peach);
-  color: #8a4620;
+  background: #bfe4e0;
+  color: #194943;
 }
 
-.pill--link {
-  background: var(--sky);
-  color: #234a76;
-  text-decoration: none;
+.pill.tone-6,
+.chip.tone-6 {
+  background: #fbd3dc;
+  color: #79283e;
 }
 
-.pill--link:hover {
-  background: var(--sky-deep);
-  color: #1a3a5e;
+.pill.tone-7,
+.chip.tone-7 {
+  background: #dfeab9;
+  color: #404d19;
+}
+
+.pill.tone-8,
+.chip.tone-8 {
+  background: #c9ecf5;
+  color: #17515f;
+}
+
+.pill.tone-9,
+.chip.tone-9 {
+  background: #f6d7ee;
+  color: #6c2a5a;
+}
+
+.pill.tone-10,
+.chip.tone-10 {
+  background: #d8dbf7;
+  color: #343a80;
 }
 
 /* --- People ------------------------------------------------------------- */
