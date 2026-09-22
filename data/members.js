@@ -85,7 +85,24 @@ const MEMBERS = [
       "LLMs in research (annotation, synthetic data, agents)"
     ],
     link: "https://www.linkedin.com/in/muhua-huang-0311a2177",
-    photo: "img/people/muhua-huang.jpg"
+    photo: "img/people/muhua-huang.jpg",
+    organizer: true
+  },
+  {
+    name: "Yuka Machino",
+    program: "PhD Student, Computer Science",
+    blurb:
+      "I am advised by Prof. Robert Hawkins, and Prof. Douglas Guilbeault. I combine " +
+      "behavioral experiments with computational models to understand how social norms and " +
+      "common ground help individuals in a community coordinate and communicate.",
+    methods: [
+      "Text as data/NLP",
+      "Experiments (field, lab, survey)",
+      "Simulation & agent-based modeling"
+    ],
+    link: "https://yukam997.github.io/",
+    photo: "",
+    organizer: true
   },
   {
     name: "Marie Wako",
@@ -119,22 +136,6 @@ const MEMBERS = [
     link: "https://kathlandgren.com",
     photo: "img/people/kath-landgren.jpg"
   },
-  {
-    name: "Yuka Machino",
-    program: "PhD Student, Computer Science",
-    blurb:
-      "I am advised by Prof. Robert Hawkins, and Prof. Douglas Guilbeault. I combine " +
-      "behavioral experiments with computational models to understand how social norms and " +
-      "common ground help individuals in a community coordinate and communicate.",
-    methods: [
-      "Text as data/NLP",
-      "Experiments (field, lab, survey)",
-      "Simulation & agent-based modeling"
-    ],
-    link: "https://yukam997.github.io/",
-    photo: ""
-  }
-
   // ---------------------------------------------------------------------
   // Members go here. Example of the exact shape (commented entries never
   // appear on the site):
