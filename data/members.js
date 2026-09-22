@@ -58,14 +58,20 @@ const MEMBERS = [
     photo: "img/people/daniel-verdi.jpg",
     organizer: true
   },
-  // TODO: Ruishi's blurb and methods — this card stays sparse until they're in.
   {
     name: "Ruishi Chen",
     program: "PhD Student, Education Data Science",
-    blurb: "",
-    methods: [],
-    link: "",
-    photo: "",
+    blurb:
+      "Ruishi's research examines how evaluative processes shape knowledge diffusion and how " +
+      "emerging technologies transform these processes. In particular, she studies how " +
+      "institutions assess ideas and innovations using computational methods.",
+    methods: [
+      "Text as data/NLP",
+      "Network analysis",
+      "Simulation & agent-based modeling"
+    ],
+    link: "https://ruishi-chen.github.io/",
+    photo: "img/people/ruishi-chen.jpg",
     organizer: true
   },
 
