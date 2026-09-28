@@ -136,6 +136,21 @@ const MEMBERS = [
     link: "https://kathlandgren.com",
     photo: "img/people/kath-landgren.jpg"
   },
+  {
+    name: "Ke ‘Kay’ Fang",
+    program: "PhD Student, Psychology (Cognitive Science)",
+    blurb:
+      "I am a PhD student in Psychology (Cognitive Science). My research focuses on " +
+      "computational approaches to understanding how distributed individual minds give rise " +
+      "to emergent collective phenomena, including cooperation, norms, and polarization.",
+    methods: [
+      "Experiments (field, lab, survey)",
+      "Simulation & agent-based modeling",
+      "Bayesian & statistical modeling"
+    ],
+    link: "https://kefangpsych.github.io/intro.html",
+    photo: "img/people/ke-fang.jpg"
+  },
   // ---------------------------------------------------------------------
   // Members go here. Example of the exact shape (commented entries never
   // appear on the site):
