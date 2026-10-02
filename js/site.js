@@ -195,9 +195,16 @@
       '<article class="event' +
       (isPast ? " event--past" : "") +
       '">' +
+      '<div class="event__when">' +
       '<span class="event__week">' +
       esc(event.week || "") +
       "</span>" +
+      (isPast
+        ? '<span class="event__held">' +
+          '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.6l3.4 3.4L13 5"/></svg>' +
+          "Held</span>"
+        : "") +
+      "</div>" +
       "<div>" +
       '<h3 class="event__title">' +
       esc(event.title || "") +

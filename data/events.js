@@ -18,20 +18,21 @@
    }
 
    AFTER AN EVENT: change status to "past" and add any materials. It moves
-   itself from the schedule to the archive automatically.
+   itself from the schedule to the archive automatically, and picks up a green
+   "Held" tick under its week badge.
 --------------------------------------------------------------------------- */
 
 const EVENTS = [
   {
     quarter: "Autumn 2026",
     week: "Week 2",
-    date: "TBD",
-    title: "Kickoff + “Meet a Collaborator”",
+    date: "October 1st, 2026",
+    title: "Kickoff",
     blurb:
-      "The launch of (CSS)². An introduction to the community, followed by a structured session for meeting people working on related things in other departments. Food provided.",
+      "The launch of (CSS)². An informal gathering for us to get to know each other. Food provided.",
     host: "",
     location: "",
-    status: "upcoming",
+    status: "past",
     materials: []
   },
   {
