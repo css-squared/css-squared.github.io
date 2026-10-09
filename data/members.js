@@ -151,6 +151,75 @@ const MEMBERS = [
     link: "https://kefangpsych.github.io/intro.html",
     photo: "img/people/ke-fang.jpg"
   },
+  {
+    name: "Kelly Liu",
+    program: "PhD Student, Sociology",
+    blurb: "",
+    methods: [
+      "Text as data/NLP",
+      "Network analysis",
+      "Simulation & agent-based modeling"
+    ],
+    link: "",
+    photo: "img/people/kelly-liu.jpg"
+  },
+  {
+    name: "Tara Srirangarajan",
+    program: "Postdoc, Stanford Graduate School of Business",
+    blurb:
+      "I am a Postdoctoral Scholar at the Stanford Graduate School of Business. My research " +
+      "examines how affective processes shape human behavior across levels of analysis.",
+    methods: [
+      "Text as data/NLP",
+      "Images, audio & video as data",
+      "Experiments (field, lab, survey)"
+    ],
+    link: "",
+    photo: "img/people/tara-srirangarajan.jpg"
+  },
+  {
+    name: "Lorena Martin Rodriguez",
+    program: "PhD Student, Linguistics",
+    blurb:
+      "I use NLP approaches to multilingual multimodal data to answer questions to social " +
+      "problems.",
+    methods: [
+      "Text as data/NLP",
+      "Geospatial analysis",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    link: "https://www.linkedin.com/in/lorenamartinr",
+    photo: "img/people/lorena-martin-rodriguez.jpg"
+  },
+  {
+    name: "Joice Chen",
+    program: "PhD Student, Organizational Behavior",
+    blurb:
+      "Joice is broadly interested in studying dynamics within social and cultural systems, " +
+      "such as changes in cultural variation, cultural transmission in networks, and how " +
+      "innovations emerge.",
+    methods: [
+      "Network analysis",
+      "Simulation & agent-based modeling"
+    ],
+    link: "",
+    photo: ""
+  },
+  {
+    name: "Kerstin Forster",
+    program: "Visiting PhD Student, Machine Learning for Sustainability",
+    blurb:
+      "Kerstin is a PhD student at LMU Munich and Visiting Researcher at Stanford. She applies " +
+      "machine learning to sustainability and global development, focusing on ESG reporting, " +
+      "development finance, SDG forecasting, and climate communication.",
+    methods: [
+      "Text as data/NLP",
+      "Machine learning & prediction",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    link: "https://www.linkedin.com/in/kerstinforster/",
+    photo: "img/people/kerstin-forster.jpg"
+  },
   // ---------------------------------------------------------------------
   // Members go here. Example of the exact shape (commented entries never
   // appear on the site):

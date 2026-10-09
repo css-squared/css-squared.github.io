@@ -10,6 +10,7 @@ the centre, resize to 320x320, strip EXIF, and save as an optimised JPEG.
 writes img/people/jane-doe.jpg and prints the line to paste into the data file.
 
 Requires Pillow:  pip install Pillow
+(and pillow-heif for .heic/.heif images from an iPhone)
 """
 
 import re
@@ -20,6 +21,17 @@ try:
     from PIL import Image, ImageOps
 except ImportError:
     sys.exit("Pillow is not installed. Run:  pip install Pillow")
+
+# iPhones hand out .heic/.heif by default, which Pillow can't read on its own
+# and browsers can't display at all. If the plugin is installed we convert
+# them like anything else; if not, say so instead of failing cryptically.
+try:
+    import pillow_heif
+
+    pillow_heif.register_heif_opener()
+    HEIF = True
+except ImportError:
+    HEIF = False
 
 SIZE = 320
 OUT_DIR = Path(__file__).resolve().parent.parent / "img" / "people"
@@ -39,6 +51,12 @@ def main():
 
     if not src.is_file():
         sys.exit("No such file: %s" % src)
+
+    if src.suffix.lower() in (".heic", ".heif") and not HEIF:
+        sys.exit(
+            "%s is a HEIF image, which needs an extra plugin. "
+            "Run:  pip install pillow-heif" % src.name
+        )
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     dest = OUT_DIR / (slugify(name) + ".jpg")

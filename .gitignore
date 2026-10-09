@@ -9,3 +9,7 @@ img/people/_originals/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Python bytecode
+__pycache__/
+*.pyc
