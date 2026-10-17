@@ -47,18 +47,6 @@ const EVENTS = [
     status: "upcoming",
     materials: []
   },
-  {
-    quarter: "Autumn 2026",
-    week: "Week 7",
-    date: "TBD",
-    title: "AI Panel with Stanford Faculty",
-    blurb:
-      "A panel of Stanford faculty on what AI is actually changing in social science research — and what it isn't.",
-    host: "",
-    location: "",
-    status: "upcoming",
-    materials: []
-  },
 
   {
     quarter: "Winter 2027",

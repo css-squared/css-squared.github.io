@@ -677,20 +677,13 @@ a:hover {
   margin: 0.5rem 0 0;
 }
 
-.event--past {
-  background: #fdf7f1;
-  box-shadow: none;
-  border: 1px solid var(--line);
-}
-
+/* A past session keeps the same white card as an upcoming one — the earlier
+   tinted background sat a couple of values away from the page colour and read
+   as a rendering fault rather than a deliberate state. The muted week badge
+   and the green "Held" tick carry the distinction instead. */
 .event--past .event__week {
   color: var(--ink-2);
   background: var(--line);
-}
-
-.event--past:hover {
-  transform: none;
-  box-shadow: var(--shadow);
 }
 
 @media (max-width: 34rem) {
