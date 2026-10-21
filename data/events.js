@@ -38,8 +38,8 @@ const EVENTS = [
   {
     quarter: "Autumn 2026",
     week: "Week 5",
-    date: "TBD",
-    title: "Research Pathways Panel",
+    date: "October 26th, 2026",
+    title: "Career Pathways Panel",
     blurb:
       "Senior interdisciplinary CSS researchers on how they built research programs and careers that span technical and theoretical fields, and what they would do differently.",
     host: "",
