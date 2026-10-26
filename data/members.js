@@ -220,6 +220,52 @@ const MEMBERS = [
     link: "https://www.linkedin.com/in/kerstinforster/",
     photo: "img/people/kerstin-forster.jpg"
   },
+  {
+    name: "Joyce Gill",
+    program:
+      "PhD Student, Education Data Science and Learning Sciences and Technology Design. " +
+      "Master's Student, Computer Science.",
+    blurb:
+      "I am a PhD student advised by Dora Demszky. My research lies at the intersection of " +
+      "HCI, AIED, and NLP. I study the translational and implementation science of AIED " +
+      "systems to develop scalable and sustainable education measures.",
+    methods: [
+      "Text as data/NLP",
+      "Experiments (field, lab, survey)",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    // Submitted as "joycegill.github.io" with no scheme, which the link check
+    // rejects. Added https:// so the name is clickable.
+    link: "https://joycegill.github.io",
+    photo: "img/people/joyce-gill.jpg"
+  },
+  {
+    name: "Isha Sinha",
+    program: "Master's Student, Computer Science",
+    blurb: "",
+    methods: [
+      "Text as data/NLP",
+      "Machine learning & prediction",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    link: "https://www.linkedin.com/in/isha-s-45490b245/",
+    photo: "img/people/isha-sinha.jpg"
+  },
+  {
+    name: "Rhea Kapur",
+    program: "Coterminal Student, Computer Science",
+    blurb:
+      "Rhea Kapur is a researcher, engineer, and archivist studying choking safety signs in " +
+      "NYC restaurants, variation in folktales across cultures, and mechanistic " +
+      "interpretability.",
+    methods: [
+      "Images, audio & video as data",
+      "Experiments (field, lab, survey)",
+      "LLMs in research (annotation, synthetic data, agents)"
+    ],
+    link: "https://www.rheakapur.info",
+    photo: "img/people/rhea-kapur.jpg"
+  },
   // ---------------------------------------------------------------------
   // Members go here. Example of the exact shape (commented entries never
   // appear on the site):
