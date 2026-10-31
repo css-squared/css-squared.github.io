@@ -256,7 +256,7 @@
     }
 
     // Group by quarter, keeping the order quarters first appear in the data
-    // file. The archive reads most recent first.
+    // file. Both lists read in date order, the archive oldest first.
     var order = [];
     var groups = {};
     list.forEach(function (e) {
@@ -267,12 +267,6 @@
       }
       groups[key].push(e);
     });
-    if (status === "past") {
-      order.reverse();
-      order.forEach(function (key) {
-        groups[key].reverse();
-      });
-    }
 
     container.innerHTML = order
       .map(function (key) {
