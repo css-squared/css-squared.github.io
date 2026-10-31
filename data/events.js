@@ -44,7 +44,7 @@ const EVENTS = [
     date: "October 26th, 2026",
     title: "Career Pathways Panel",
     blurb:
-      "Interdisciplinary CSS researchers on how they built careers that span technical and social science fields, and what they would do differently.",
+      "Interdisciplinary CSS researchers share how they built careers spanning technical and social science fields.",
     speakersLabel: "Panelists",
     speakers: [
       { name: "Kath Landgren", url: "https://kathlandgren.com" },
