@@ -178,6 +178,28 @@
     if (event.location) meta.push(esc(event.location));
     if (event.host) meta.push("Hosted by " + esc(event.host));
 
+    var speakers = "";
+    if (Array.isArray(event.speakers)) {
+      var names = event.speakers
+        .filter(function (s) {
+          return s && s.name;
+        })
+        .map(function (s) {
+          return linked(s.name, s.url);
+        });
+      if (names.length > 1) {
+        names[names.length - 1] = "and " + names[names.length - 1];
+      }
+      if (names.length) {
+        speakers =
+          '<p class="event__people"><span class="event__people-label">' +
+          esc(event.speakersLabel || "Speakers") +
+          ":</span> " +
+          names.join(names.length > 2 ? ", " : " ") +
+          "</p>";
+      }
+    }
+
     var materials = "";
     if (isPast && Array.isArray(event.materials)) {
       var links = event.materials
@@ -212,6 +234,7 @@
       '<p class="event__blurb">' +
       esc(event.blurb || "") +
       "</p>" +
+      speakers +
       (meta.length ? '<p class="event__meta">' + meta.join(" · ") + "</p>" : "") +
       materials +
       "</div>" +
@@ -244,7 +267,12 @@
       }
       groups[key].push(e);
     });
-    if (status === "past") order.reverse();
+    if (status === "past") {
+      order.reverse();
+      order.forEach(function (key) {
+        groups[key].reverse();
+      });
+    }
 
     container.innerHTML = order
       .map(function (key) {

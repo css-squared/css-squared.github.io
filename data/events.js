@@ -10,6 +10,9 @@
                                     //   e.g. "Thu Oct 8 · 4:00–5:30pm"
      title:   "Event title",
      blurb:   "One or two sentences describing the event.",
+     speakers: [],                  // optional: [{ name: "Ada", url: "https://..." }]
+                                    //   url is optional; names show as links
+     speakersLabel: "Speakers",     // optional: e.g. "Panelists"
      host:    "",                   // optional: rotating departmental host
      location:"",                   // optional
      status:  "upcoming",           // "upcoming" or "past"  <-- flip after it happens
@@ -41,10 +44,16 @@ const EVENTS = [
     date: "October 26th, 2026",
     title: "Career Pathways Panel",
     blurb:
-      "Senior interdisciplinary CSS researchers on how they built research programs and careers that span technical and theoretical fields, and what they would do differently.",
+      "Interdisciplinary CSS researchers on how they built careers that span technical and social science fields, and what they would do differently.",
+    speakersLabel: "Panelists",
+    speakers: [
+      { name: "Kath Landgren", url: "https://kathlandgren.com" },
+      { name: "Jacy Reese Anthis", url: "https://jacyanthis.com" },
+      { name: "Portia Wang", url: "https://pwang1230.github.io" }
+    ],
     host: "",
     location: "",
-    status: "upcoming",
+    status: "past",
     materials: []
   },
 
