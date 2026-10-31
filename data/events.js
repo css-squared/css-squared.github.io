@@ -40,7 +40,7 @@ const EVENTS = [
   },
   {
     quarter: "Autumn 2026",
-    week: "Week 5",
+    week: "Week 6",
     date: "October 26th, 2026",
     title: "Career Pathways Panel",
     blurb:
